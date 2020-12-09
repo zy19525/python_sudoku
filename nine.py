@@ -2,7 +2,7 @@ from random import seed
 from random import randint
 import random
 import numpy as np
-seed()
+seed(101)
 
 def place():
     one=[]
