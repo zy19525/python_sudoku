@@ -2,10 +2,10 @@ from random import seed
 from random import randint
 import random
 import numpy as np
+seed()
 
 def place():
     one=[]
-    seed()
     for i in range(3):
         block=[(i*3+1),(3*i+2),(3*i+3)]
         random.shuffle(block)
@@ -100,12 +100,9 @@ def canbedected(origined,matrix,r,c):
                 single[b,t]=0
         single[allgoal[0][a],:]=0
         single[:,allgoal[1][a]]=0
-    small=np.zeros(shape=(3,3))
     for e in range(3):
         for f in range(3):
-            for smallr in [f*3,f*3+1,f*3+2]:
-                for smallc in [e*3,e*3+1,e*3+2]:
-                    small[smallr%3,smallc%3]=single[smallr,smallc]
+            small=single[f*3:(f*3+3),e*3:(e*3+3)]
             aa=np.where(small==1)
             block=set(range(9))
             if len(set(aa[0]))==1:
