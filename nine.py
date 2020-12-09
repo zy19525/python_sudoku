@@ -7,7 +7,6 @@ import time
 
 def place():
     one=[]
-    seed(580)
     for i in range(3):
         seed()
         block=[(i*3+1),(3*i+2),(3*i+3)]
