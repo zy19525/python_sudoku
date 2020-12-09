@@ -2,11 +2,14 @@ from random import seed
 from random import randint
 import random
 import numpy as np
-seed(101)
+import time
+
 
 def place():
     one=[]
+    seed(580)
     for i in range(3):
+        seed()
         block=[(i*3+1),(3*i+2),(3*i+3)]
         random.shuffle(block)
         one=one+block
@@ -29,14 +32,15 @@ def rowcol():
 def test():
     full=rowcol()
     total=[]
-    for i in range(7):
-        contains=True
+    for i in range(6):
+        fff=rowcol()
+        total=full+fff
+        contains=any(total.count(ele)>1 for ele in total)
         while contains:
             fff=rowcol()
             total=full+fff
             contains=any(total.count(ele)>1 for ele in total)
         full=full+fff
-        i=i+1
     return full
 
 def matrix():
@@ -78,9 +82,9 @@ def create():
                 if len(remain)==1:
                     mm[ww[0][i],ww[1][i]]=remain[0]
             ww=np.where(mm==0)
-            t=t+1
         if len(ww[0])==0:
             aa=True
+            print(mm)
         uu=uu+1
         print(uu)
     return mm
